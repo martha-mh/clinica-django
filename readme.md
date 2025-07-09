@@ -60,6 +60,7 @@ Antes de iniciar con la instalación del proyecto, asegúrate de tener instalado
 
 4.	Realiza las migraciones:
       ```bash
+      python manage.py makemigrations
       python manage.py migrate
       ```
 
