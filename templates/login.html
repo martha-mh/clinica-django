@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+{% if not user.is_authenticated %}
+
 <div class="auth-main relative">
   <div class="auth-wrapper v1 flex items-center w-full h-full min-h-screen">
     <div class="auth-form flex items-center justify-center grow flex-col min-h-screen relative p-6 ">
@@ -21,14 +24,12 @@
             <form method="POST" novalidate>
               {% csrf_token %}
               
-              <!-- Mostrar errores generales -->
               {% if form.non_field_errors %}
-                <div class="bg-danger-100 text-danger-800 mb-3 p-2  rounded">
+                <div class="bg-danger-100 text-danger-800 mb-3 p-2 rounded">
                   {{ form.non_field_errors }}
                 </div>
               {% endif %}
               
-              <!-- Usuario -->
               <div class="mb-3">
                 {{ form.username.label_tag }}
                 {{ form.username }}
@@ -37,7 +38,6 @@
                 {% endfor %}
               </div>
 
-              <!-- Contraseña -->
               <div class="mb-3">
                 {{ form.password.label_tag }}
                 {{ form.password }}
@@ -45,6 +45,7 @@
                   <div class="text-red-500 text-sm mt-1">{{ error }}</div>
                 {% endfor %}
               </div>
+
               <div class="mt-4 text-center">
                 <button type="submit" class="btn btn-primary mx-auto shadow-2xl">Ingresar</button>
               </div>
@@ -55,4 +56,13 @@
     </div>
   </div>
 </div>
+
+{% else %}
+<script>        
+  
+    window.location.href = "{% url 'list_appointments' %}";
+ 
+</script>
+
+{% endif %}
 {% endblock %}
