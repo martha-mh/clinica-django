@@ -6,7 +6,3 @@ class CustomLoginView(LoginView):
     form_class = CustomLoginForm
     template_name = 'login.html'
     redirect_authenticated_user = True
-
-    def form_invalid(self, form):
-        messages.error(self.request, "Usuario o contraseña incorrectos.")
-        return super().form_invalid(form)

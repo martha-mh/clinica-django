@@ -58,10 +58,8 @@
 </div>
 
 {% else %}
-<script>        
-  
-    window.location.href = "{% url 'list_appointments' %}";
- 
+<script>
+    window.location.href = "{{ LOGIN_REDIRECT_URL }}";
 </script>
 
 {% endif %}
