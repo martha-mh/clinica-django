@@ -44,8 +44,8 @@ Antes de iniciar con la instalación del proyecto, asegúrate de tener instalado
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo.git
-   cd tu-repo
+   git clone https://github.com/martha-mh/clinica-django.git
+   cd clinica-django
    ```
 2.	Crea y activa el entorno virtual:
       ```bash
