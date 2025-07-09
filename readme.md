@@ -25,6 +25,21 @@ Este es un sistema web desarrollado en Django para gestionar doctores, pacientes
 - jQuery
 - Select2
 
+## 📋 Prerrequisitos
+
+Antes de iniciar con la instalación del proyecto, asegúrate de tener instalado lo siguiente:
+
+- [Python 3.10+](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installation/)
+- [Git](https://git-scm.com/downloads)
+- [Virtualenv](https://virtualenv.pypa.io/en/latest/) (opcional pero recomendado)
+- [SQLite3](https://www.sqlite.org/index.html) (ya viene con Python)
+
+### Recomendado
+
+- [Postman](https://www.postman.com/) – Para probar los endpoints de la API
+- Editor de código como [VS Code](https://code.visualstudio.com/)
+
 ## Instalación
 
 1. Clona el repositorio:
