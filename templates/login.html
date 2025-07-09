@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="auth-main relative">
+  <div class="auth-wrapper v1 flex items-center w-full h-full min-h-screen">
+    <div class="auth-form flex items-center justify-center grow flex-col min-h-screen relative p-6 ">
+      <div class="w-full max-w-[350px] relative">
+        <div class="auth-bg">
+          <span class="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-1 animate-[floating_7s_infinite]"></span>
+          <span class="absolute top-[150px] right-[-150px] w-5 h-5 block rounded-full bg-primary-500 animate-[floating_9s_infinite]"></span>
+          <span class="absolute left-[-150px] bottom-[150px] w-5 h-5 block rounded-full bg-theme-bg-1 animate-[floating_7s_infinite]"></span>
+          <span class="absolute left-[-100px] bottom-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-2 animate-[floating_9s_infinite]"></span>
+        </div>
+        <div class="card md:my-12 w-full shadow-none">
+          <div class="card-body !p-10">
+            <div class="text-center mb-8">
+              <a href="#"><img src="{% static 'assets/images/logo-dark.jpg' %}" alt="logo" class="mx-auto auth-logo" /></a>
+            </div>
+            <h4 class="text-center font-medium mb-4">Iniciar sesión</h4>
+
+            <form method="POST" novalidate>
+              {% csrf_token %}
+              
+              <!-- Mostrar errores generales -->
+              {% if form.non_field_errors %}
+                <div class="alert alert-danger p-1">
+                  {{ form.non_field_errors }}
+                </div>
+              {% endif %}
+              
+              <!-- Usuario -->
+              <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                  <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <!-- Contraseña -->
+              <div class="mb-3">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                  <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                {% endfor %}
+              </div>
+              <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-primary mx-auto shadow-2xl">Ingresar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

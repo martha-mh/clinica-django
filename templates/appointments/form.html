@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid grid-cols-12">
+  <div class="col-span-12 xl:col-span-12 md:col-span-12">
+    <div class="card">
+
+      <div class="card-header">
+        <h3 class="mb-1 font-medium">{% if edit %}Editar cita{% else %}Nueva cita{% endif %}</h3>
+      </div>
+      
+      <div class="card-body">
+
+        {% if messages %}
+          {% for message in messages %}
+          <div id="swal-message" data-text="{{ message }}" data-type="{{ message.tags }}"></div>
+          {% endfor %}
+        {% endif %}
+        
+        <form method="post" id="appointment-form" novalidate>
+          {% csrf_token %}
+          
+          {% for field in form %}
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1" for="{{ field.id_for_label }}">
+                {{ field.label }}
+              </label>
+              {{ field }}
+              {% if field.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ field.errors|striptags }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+
+          <button type="submit" class="btn bg-fuchsia-500 text-white">Guardar</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

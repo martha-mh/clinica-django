@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid grid-cols-12">
+  <div class="col-span-12 xl:col-span-12 md:col-span-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-1 font-medium">Lista de Citas</h3>
+      </div>
+
+      <div class="card-body">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div id="swal-message" data-text="{{ message }}" data-type="{{ message.tags }}"></div>
+        {% endfor %}
+        {% endif %}
+
+        <table class="table">
+          <thead>
+            <tr class="bg-fuchsia-200">
+              <th>Fecha</th>
+              <th>Paciente</th>
+              <th>Médico</th>
+              <th>Tipo</th>
+              <th>Número de Cita</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if appointments %}
+              {% for appointment in appointments %}
+              <tr>
+              <td>{{ appointment.date_time }}</td>
+              <td>{{ appointment.patient }}</td>
+              <td>{{ appointment.doctor }}</td>
+              <td>{{ appointment.type }}</td>
+              <td>{{ appointment.number }}</td>
+              <td>
+                <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'delete_appointment' appointment.id %}"
+                class="btn btn-sm btn-danger btn-delete-appointment" data-id="{{ appointment.id }}">Eliminar</a>
+              </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+              <td colspan="6" class="text-center">No se encontraron datos</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+# Entornos virtuales
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Archivos de configuración y base de datos local
+*.sqlite3
+*.db
+
+# Configuración del entorno
+*.env
+.env.*
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+*.log
+
+# Archivos temporales de editores
+*.swp
+*.swo
+*.bak
+
+# Archivos generados por VSCode
+.vscode/
+
+# Archivos estáticos generados
+/staticfiles/
+/media/
+
+# Node.js (si usas herramientas front-end con npm)
+node_modules/
+dist/

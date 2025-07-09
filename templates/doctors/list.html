@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid grid-cols-12">
+  <div class="col-span-12 xl:col-span-12 md:col-span-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-1 font-medium">Lista de Doctores</h3>
+      </div>
+
+      <div class="card-body">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div id="swal-message" data-text="{{ message }}" data-type="{{ message.tags }}"></div>
+        {% endfor %}
+        {% endif %}
+
+        <table class="table">
+          <thead>
+            <tr class="bg-fuchsia-200">
+              <th>Nombre</th>
+              <th>Especialidad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if doctors %}
+              {% for doctor in doctors %}
+              <tr>
+              <td>{{ doctor.name }}</td>
+              <td>{{ doctor.specialty }}</td>
+              <td>
+              <a href="{% url 'edit_doctor' doctor.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'delete_doctor' doctor.id %}"
+                class="btn btn-sm btn-danger btn-delete-doctor" data-id="{{ doctor.id }}">Eliminar</a>
+              </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+              <td colspan="3" class="text-center">No se encontraron datos</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
