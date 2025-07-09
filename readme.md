@@ -50,7 +50,16 @@ Antes de iniciar con la instalación del proyecto, asegúrate de tener instalado
 2.	Crea y activa el entorno virtual:
       ```bash
       python -m venv venv
-      source venv/bin/activate  # En Windows: venv\Scripts\activate
+      ```
+
+      Para activarlo, en Linux/macOS:
+      ```bash
+      source venv/bin/activate
+      ```
+
+      Para activarlo, en Windows:
+      ```bash
+      venv\Scripts\activate
       ```
 
 3.	Instala los requisitos:
